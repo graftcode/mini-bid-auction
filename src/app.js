@@ -7,6 +7,8 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+// app.use('/api', "place router here")
+
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
