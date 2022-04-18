@@ -13,7 +13,7 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
+app.get("/", (_, res) => {
   res.send("Hello World!");
 });
 
