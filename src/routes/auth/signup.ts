@@ -26,11 +26,11 @@ router.post("/signup", async (req, res) => {
     fullname,
   });
 
+  if (error) return res.send({ message: error.details[0].message });
+
   // salt and hash password
   const salt = await genSalt(5);
   const hashedPassword = await bcryptjs.hash(password, salt);
-
-  if (error) return res.send({ message: error.details[0].message });
 
   try {
     const newUser = await UserModel.create({
