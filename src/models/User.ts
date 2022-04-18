@@ -6,6 +6,7 @@ export interface IUser {
   username: string;
   password: string;
   fullname: string;
+  date_created?: string;
 }
 
 const UserSchema = new Schema({
@@ -24,6 +25,11 @@ const UserSchema = new Schema({
   },
   fullname: {
     type: String,
+    required: true,
+  },
+  date_created: {
+    type: Date,
+    default: Date.now(),
     required: true,
   },
 });
