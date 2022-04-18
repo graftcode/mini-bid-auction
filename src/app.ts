@@ -1,13 +1,17 @@
 import express from "express";
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
-
-dotenv.config({ path: `${__dirname}/../.env` });
+import bodyParser from "body-parser";
 
 import authRoutes from "./routes/auth";
 
+dotenv.config({ path: `${__dirname}/../.env` });
+
 const app = express();
 const port = 3000;
+
+
+app.use(bodyParser.json())
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
