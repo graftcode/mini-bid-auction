@@ -1,4 +1,4 @@
-const signup = require("./signup");
-const login = require("./login");
+import signup from "./signup";
+import login from "./login";
 
-module.exports = auth;
+export default [signup, login];
