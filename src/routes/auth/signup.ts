@@ -4,10 +4,17 @@ import UserModel from "../../models/User";
 import { applyCorrectCasing } from "../../utils/applyCorrectCasing";
 import { signupValidation } from "../../validation/signupValidation";
 
+interface IrequestBody {
+  email: string;
+  password: string;
+  username: string;
+  fullname: string;
+}
+
 const router = expressRouter();
 
 router.post("/signup", async (req, res) => {
-  const { email, password, username, fullname } = req.body;
+  const { email, password, username, fullname }: IrequestBody = req.body;
 
   const userExists = await UserModel.findOne({ email });
 
