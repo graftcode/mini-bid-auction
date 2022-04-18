@@ -1,4 +1,5 @@
 import { Router as expressRouter } from "express";
+import bcryptjs, { genSalt } from "bcryptjs";
 
 import UserModel from "../../models/User";
 import { applyCorrectCasing } from "../../utils/applyCorrectCasing";
@@ -30,12 +31,16 @@ router.post("/signup", async (req, res) => {
     fullname,
   });
 
+  // salt and hash password
+  const salt = await genSalt(5);
+  const hashedPassword = await bcryptjs.hash(password, salt);
+
   if (error) return res.send({ message: error.details[0].message });
 
   try {
     const newUser = await UserModel.create({
       email: email.toLowerCase(),
-      password,
+      password: hashedPassword,
       username: username.toLowerCase(),
       fullname: applyCorrectCasing(fullname),
     });
