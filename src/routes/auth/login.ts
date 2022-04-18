@@ -1,8 +1,7 @@
 import { Router as expressRouter } from "express";
 import { compare } from "bcryptjs";
-import User from "../../models/User";
 
-import { IUser } from "../../models/User";
+import User, { IUser } from "../../models/User";
 import { loginValidation } from "../../validation/loginValidation";
 
 const router = expressRouter();
