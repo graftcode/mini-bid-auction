@@ -1,5 +1,6 @@
 import { Router as expressRouter } from "express";
 import { compare } from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 import User, { IUser } from "../../models/User";
 import { loginValidation } from "../../validation/loginValidation";
@@ -35,7 +36,10 @@ router.post("/login", async (req, res) => {
   const passwordIsMatch = await compare(password, user.password);
 
   if (passwordIsMatch) {
-    return res.send({
+    const secret = process.env.TOKEN_SECRET as string;
+    const token = jwt.sign({ id: user._id }, secret);
+
+    return res.set({ "auth-token": token }).send({
       message: "Successfully logged in",
     });
   }
