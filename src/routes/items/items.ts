@@ -1,7 +1,7 @@
-import { Router as expressRouter } from "express";
+import { Router } from "express";
 import verifyToken from "../../validation/verifyToken";
 
-const router = expressRouter();
+const router = Router();
 
 router.get("/items", verifyToken, (req, res) => {
   console.log("res.locals: ", res.locals);

@@ -1,11 +1,11 @@
-import { Router as expressRouter, Request, Response } from "express";
+import { Router, Request, Response } from "express";
 import bcryptjs, { genSalt } from "bcryptjs";
 
 import UserModel from "../../models/User";
 import { applyCorrectCasing } from "../../utils/applyCorrectCasing";
 import { signupValidation } from "../../validation/signupValidation";
 
-const router = expressRouter();
+const router = Router();
 
 router.post("/signup", async (req: Request, res: Response) => {
   const { email, password, username, fullname } = req.body;
