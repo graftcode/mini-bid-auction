@@ -37,7 +37,7 @@ router.post("/login", async (req, res) => {
 
   if (passwordIsMatch) {
     const secret = process.env.TOKEN_SECRET as string;
-    const token = jwt.sign({ id: user._id }, secret);
+    const token = jwt.sign({ _id: user._id }, secret);
 
     return res.set({ "auth-token": token }).send({
       message: "Successfully logged in",
