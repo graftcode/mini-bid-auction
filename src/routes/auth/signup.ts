@@ -1,16 +1,14 @@
-import { Router as expressRouter } from "express";
+import { Router as expressRouter, Request, Response } from "express";
 import bcryptjs, { genSalt } from "bcryptjs";
 
 import UserModel from "../../models/User";
 import { applyCorrectCasing } from "../../utils/applyCorrectCasing";
 import { signupValidation } from "../../validation/signupValidation";
 
-import { IUser } from "../../models/User";
-
 const router = expressRouter();
 
-router.post("/signup", async (req, res) => {
-  const { email, password, username, fullname }: IUser = req.body;
+router.post("/signup", async (req: Request, res: Response) => {
+  const { email, password, username, fullname } = req.body;
 
   const userExists = await UserModel.findOne({ email });
 

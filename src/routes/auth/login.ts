@@ -1,4 +1,4 @@
-import { Router as expressRouter } from "express";
+import { Router as expressRouter, Request, Response } from "express";
 import { compare } from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -7,13 +7,8 @@ import { loginValidation } from "../../validation/loginValidation";
 
 const router = expressRouter();
 
-interface IrequestBody {
-  email: string;
-  password: string;
-}
-
-router.post("/login", async (req, res) => {
-  const { email, password }: IrequestBody = req.body;
+router.post("/login", async (req: Request, res: Response) => {
+  const { email, password } = req.body;
 
   const user: IUser | null = await User.findOne({
     email,
