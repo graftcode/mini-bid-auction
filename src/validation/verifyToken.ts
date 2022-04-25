@@ -10,7 +10,7 @@ const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { _id }: JwtPayload["_id"] = verify(authToken, secret);
     res.locals = { _id };
-    console.log("verifyToken here")
+
     next();
   } catch (error) {
     return res.status(401).send({ message: "Invalid token" });
