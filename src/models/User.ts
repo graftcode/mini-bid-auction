@@ -28,8 +28,8 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  date_created: {
-    type: Date,
+  createdAt: {
+    type: String,
     default: format(Date.now(), "dd/MM/yyyy"),
     required: true,
   },
