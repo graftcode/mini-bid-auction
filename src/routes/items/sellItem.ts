@@ -20,6 +20,7 @@ router.post("/sell-item", verifyToken, async (req: Request, res: Response) => {
     try {
       const itemToSell = await ItemModel.create({
         seller_id: user._id,
+        seller_username: user.username,
         item,
         description,
         condition,

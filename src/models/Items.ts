@@ -16,6 +16,10 @@ const ItemSchema = new Schema({
     type: String,
     required: true,
   },
+  seller_username: {
+    type: String,
+    required: true,
+  },
   item: {
     type: String,
     required: true,
