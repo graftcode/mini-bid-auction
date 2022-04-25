@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { format } from "date-fns";
 
 export interface IUser {
   _id?: string;
@@ -29,7 +30,7 @@ const UserSchema = new Schema({
   },
   date_created: {
     type: Date,
-    default: Date.now(),
+    default: format(Date.now(), "dd/MM/yyyy"),
     required: true,
   },
 });
