@@ -2,7 +2,7 @@ import { Router, Request, Response } from "express";
 import { compare } from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-import User, { IUser } from "../../models/User";
+import UserModel, { IUser } from "../../models/User";
 import { loginValidation } from "../../validation/loginValidation";
 
 const router = Router();
@@ -10,7 +10,7 @@ const router = Router();
 router.post("/login", async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
-  const user: IUser | null = await User.findOne({
+  const user: IUser | null = await UserModel.findOne({
     email,
   });
 
