@@ -3,7 +3,6 @@ import UserModel from "../../models/User";
 import ItemModel from "../../models/Items";
 import AuctionModel from "../../models/Auction";
 import verifyToken from "../../validation/verifyToken";
-import Items from "../../models/Items";
 
 const router = Router();
 
