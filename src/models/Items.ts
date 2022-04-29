@@ -1,14 +1,16 @@
 import { Schema, model } from "mongoose";
 import { format } from "date-fns";
 
-export interface IUser {
-  id: string;
+export interface IItem {
+  _id: string;
+  seller_username: string;
   seller_id: string;
   item: string;
   description: string;
   condition: string;
+  auction_ends: string;
+  date_listed: string;
   status: string;
-  createdAt: string;
 }
 
 const ItemSchema = new Schema({
@@ -47,4 +49,4 @@ const ItemSchema = new Schema({
   },
 });
 
-export default model<IUser>("Items", ItemSchema);
+export default model<IItem>("Items", ItemSchema);
