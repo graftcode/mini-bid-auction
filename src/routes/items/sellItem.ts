@@ -1,7 +1,9 @@
-import { Router, Request, Response } from "express";
+import e, { Router, Request, Response } from "express";
 import UserModel from "../../models/User";
 import ItemModel from "../../models/Items";
+import AuctionModel from "../../models/Auction";
 import verifyToken from "../../validation/verifyToken";
+import Items from "../../models/Items";
 
 const router = Router();
 
@@ -27,9 +29,20 @@ router.post("/sell-item", verifyToken, async (req: Request, res: Response) => {
         auction_ends,
       });
 
+      // add item to auction
+      const itemPlacedInAuction = await AuctionModel.create({
+        auctioned_item: itemToSell?._id,
+        status: itemToSell?.status,
+        date_listed: itemToSell?.date_listed,
+        auction_ends,
+      });
+
       return res.send({
         message: "Successfully posted item for sale ",
-        data: itemToSell,
+        data: {
+          itemToSell,
+          itemPlacedInAuction,
+        },
       });
     } catch (error) {
       return res.send({ message: error });
