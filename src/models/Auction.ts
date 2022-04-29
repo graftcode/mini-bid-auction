@@ -1,21 +1,10 @@
 import { Schema, model } from "mongoose";
-import { format } from "date-fns";
 import mongoose from "mongoose";
 
 export interface IAuction {
-  auctioned_item: {
-    id: string;
-    seller_id: string;
-    seller_username: string;
-    item: string;
-    description: string;
-    condition: string;
-    auction_ends: string;
-    date_listed: string;
-    status: string;
-  };
+  auctioned_item: String;
   status: string;
-  createdAt: string;
+  date_listed: string;
   auction_ends: string;
   bids: { bidder_id: string; bid_price: number; bid_date: string }[];
 }
@@ -24,6 +13,18 @@ const AuctionSchema = new Schema({
   auctioned_item: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Items",
+  },
+  status: {
+    type: String,
+    required: true,
+  },
+  date_listed: {
+    type: String,
+    required: true,
+  },
+  auction_ends: {
+    type: String,
+    required: true,
   },
 
   bids: {

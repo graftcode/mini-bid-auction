@@ -1,4 +1,4 @@
-import e, { Router, Request, Response } from "express";
+import { Router, Request, Response } from "express";
 import UserModel from "../../models/User";
 import ItemModel from "../../models/Items";
 import AuctionModel from "../../models/Auction";
