@@ -40,6 +40,8 @@ router.post("/item/bid", verifyToken, async (req: Request, res: Response) => {
         auction_ends: item?.auction_ends,
       };
 
+      //consider adding logic to accept bids that are only higher than last bid in bids array
+
       AuctionModel.findOneAndUpdate(
         {
           auctioned_item: item_id,
