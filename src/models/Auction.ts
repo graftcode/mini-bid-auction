@@ -1,12 +1,15 @@
 import { Schema, model } from "mongoose";
 import mongoose from "mongoose";
+import { format } from "date-fns";
+
+import { IBid } from "../interfaces/bid_interface";
 
 export interface IAuction {
   auctioned_item: String;
   status: string;
   date_listed: string;
   auction_ends: string;
-  bids: { bidder_id: string; bid_price: number; bid_date: string }[];
+  bids: IBid[];
 }
 
 const AuctionSchema = new Schema({
@@ -30,6 +33,10 @@ const AuctionSchema = new Schema({
   bids: {
     type: [
       {
+        item_id: {
+          type: String,
+          required: true,
+        },
         bidder_id: {
           type: String,
           required: true,
@@ -38,7 +45,12 @@ const AuctionSchema = new Schema({
           type: Number,
           required: true,
         },
-        bid_date: {
+        createdAt: {
+          type: String,
+          default: format(Date.now(), "dd/MM/yyyy"),
+          required: true,
+        },
+        auction_ends: {
           type: String,
           required: true,
         },
