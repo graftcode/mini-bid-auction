@@ -26,11 +26,8 @@ router.post("/item/bid", verifyToken, async (req: Request, res: Response) => {
 
     // can be cleaner
     if (item_id && bidder_id && bid_price) {
-      console.log("before error");
       const item = await ItemsModel.findById(item_id);
 
-      console.log("after error");
-      console.log("item: ", item);
       if (item?._id.valueOf() !== item_id) {
         return res.send({ message: "Item not found" });
       }
