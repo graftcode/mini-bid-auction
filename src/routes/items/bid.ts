@@ -1,5 +1,4 @@
 import { Router, Request, Response } from "express";
-import { format } from "date-fns";
 import verifyToken from "../../validation/verifyToken";
 
 import UserModel from "../../models/User";
