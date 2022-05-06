@@ -5,9 +5,9 @@ import jwt from "jsonwebtoken";
 import UserModel, { IUser } from "../../models/User";
 import { loginValidation } from "../../validation/loginValidation";
 
-const router = Router();
 
-router.post("/login", async (req: Request, res: Response) => {
+
+const loginHandler = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   const user: IUser | null = await UserModel.findOne({
@@ -38,6 +38,6 @@ router.post("/login", async (req: Request, res: Response) => {
       message: "Successfully logged in",
     });
   }
-});
+};
 
-export default router;
+export default loginHandler;

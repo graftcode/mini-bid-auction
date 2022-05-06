@@ -1,13 +1,11 @@
-import { Router, Request, Response } from "express";
+import { Request, Response } from "express";
 import bcryptjs, { genSalt } from "bcryptjs";
 
 import UserModel from "../../models/User";
 import { applyCorrectCasing } from "../../utils/applyCorrectCasing";
 import { signupValidation } from "../../validation/signupValidation";
 
-const router = Router();
-
-router.post("/signup", async (req: Request, res: Response) => {
+const signupHandler = async (req: Request, res: Response) => {
   const { email, password, username, fullname } = req.body;
 
   const userExists = await UserModel.findOne({ email });
@@ -42,6 +40,6 @@ router.post("/signup", async (req: Request, res: Response) => {
   } catch (error) {
     res.send({ message: error });
   }
-});
+};
 
-export default router;
+export default signupHandler;

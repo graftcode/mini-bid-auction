@@ -1,5 +1,15 @@
-import items from "./items";
-import sellitem from "./sellItem";
-import bid from "./bid";
+import { Router } from "express";
 
-export default [items, sellitem, bid];
+import verifyToken from "../../validation/verifyToken";
+import getItemsHandler from "./items";
+import sellitemHandler from "./sellItem";
+import bidHandler from "./bid";
+
+const router = Router();
+
+router.get("/items", verifyToken, getItemsHandler);
+
+router.post("/item/bid", verifyToken, bidHandler);
+router.post("/sell-item", verifyToken, sellitemHandler);
+
+export default router;

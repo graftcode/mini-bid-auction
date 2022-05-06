@@ -1,12 +1,9 @@
-import { Router, Request, Response } from "express";
+import { Request, Response } from "express";
 import UserModel from "../../models/User";
 import ItemModel from "../../models/Items";
 import AuctionModel from "../../models/Auction";
-import verifyToken from "../../validation/verifyToken";
 
-const router = Router();
-
-router.post("/sell-item", verifyToken, async (req: Request, res: Response) => {
+const sellItemHandler = async (req: Request, res: Response) => {
   const { _id } = res.locals;
   const { item, description, condition, auction_ends } = req.body;
 
@@ -47,6 +44,6 @@ router.post("/sell-item", verifyToken, async (req: Request, res: Response) => {
       return res.send({ message: error });
     }
   }
-});
+};
 
-export default router;
+export default sellItemHandler;

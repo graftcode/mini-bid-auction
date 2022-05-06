@@ -4,7 +4,7 @@ import * as dotenv from "dotenv";
 import bodyParser from "body-parser";
 
 import authRoutes from "./routes/auth";
-import itemsRoutes from "./routes/items";
+import itemRoutes from "./routes/items";
 
 dotenv.config({ path: `${__dirname}/../.env` });
 
@@ -17,8 +17,8 @@ app.get("/", (_, res) => {
   res.send("Hello World!");
 });
 
-app.use("/auth", [...authRoutes]);
-app.use("/api", [...itemsRoutes]);
+app.use("/auth", authRoutes);
+app.use("/api", itemRoutes);
 
 mongoose.connect(`${process.env.DATABASE_URL}`);
 

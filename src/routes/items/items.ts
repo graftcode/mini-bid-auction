@@ -1,11 +1,8 @@
-import { Router, Request, Response } from "express";
-import verifyToken from "../../validation/verifyToken";
+import { Request, Response } from "express";
 
 import ItemModel from "../../models/Items";
 
-const router = Router();
-
-router.get("/items", verifyToken, async (req: Request, res: Response) => {
+const getItemsHandler = async (req: Request, res: Response) => {
   try {
     const itemsForSale = await ItemModel.find({
       status: "Open",
@@ -22,6 +19,6 @@ router.get("/items", verifyToken, async (req: Request, res: Response) => {
   } catch (error) {
     return res.send({ message: error });
   }
-});
+};
 
-export default router;
+export default getItemsHandler;

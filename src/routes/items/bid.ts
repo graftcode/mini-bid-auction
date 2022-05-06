@@ -1,14 +1,11 @@
-import { Router, Request, Response } from "express";
-import verifyToken from "../../validation/verifyToken";
+import { Request, Response } from "express";
 
 import UserModel from "../../models/User";
 import ItemsModel from "../../models/Items";
 import { IBid } from "../../interfaces/bid_interface";
 import AuctionModel from "../../models/Auction";
 
-const router = Router();
-
-router.post("/item/bid", verifyToken, async (req: Request, res: Response) => {
+const bidRoute = async (req: Request, res: Response) => {
   const { _id: userId } = res.locals;
   const { item_id, bidder_id, bid_price } = req.body;
 
@@ -55,6 +52,6 @@ router.post("/item/bid", verifyToken, async (req: Request, res: Response) => {
   } catch (error) {
     return res.send({ message: error });
   }
-});
+};
 
-export default router;
+export default bidRoute;
