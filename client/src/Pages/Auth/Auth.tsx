@@ -1,11 +1,25 @@
-import React from "react";
-import Login from "./Login/Login";
+import React, { useState } from "react";
+import styled from "styled-components";
+import Login from "../../Components/Form/Login/Login";
+import Signup from "../../Components/Form/Signup/Signup";
+
+const FormToggler = styled.div`
+  display: flex;
+`;
 
 const Auth: React.FC = () => {
+  const [showSignup, setShowSignup] = useState(true);
+
+  const handleFormToggle = () => setShowSignup(!showSignup);
+
   return (
     <>
-      <h1>AUTH PAGE</h1>
-      <Login />
+      <FormToggler>
+        <button onClick={handleFormToggle}>SignUp</button>
+        <button onClick={handleFormToggle}>Login</button>
+      </FormToggler>
+      {showSignup && <Signup />}
+      {!showSignup && <Login />}
     </>
   );
 };
