@@ -1,13 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import Input from "./Input";
 
+const mockProps = {
+  value: "test value",
+  label: "test",
+  type: "text",
+  onChange: jest.fn(),
+};
+
 describe("<Input/>", () => {
-  const mockProps = {
-    value: "test value",
-    label: "test",
-    type: "text",
-    onChange: jest.fn(),
-  };
   test("renders Input", () => {
     render(<Input {...mockProps} />);
   });
