@@ -9,7 +9,7 @@ import itemRoutes from "./routes/items";
 dotenv.config({ path: `${__dirname}/../.env` });
 
 const app = express();
-const port = 5000;
+const port = 4500;
 
 app.use(bodyParser.json());
 
