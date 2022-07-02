@@ -70,7 +70,7 @@ const StyledLabel = styled.label`
 const InputWrapper = styled.div`
   display: inline-block;
   position: relative;
-  max-width: ${rem(430)};
+
   width: 100%;
   margin-bottom: ${rem(30)};
 `;
