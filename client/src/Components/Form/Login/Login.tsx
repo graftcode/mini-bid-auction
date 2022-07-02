@@ -30,7 +30,7 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-        <Button buttonText="Log me in" />
+        <Button>Log me in</Button>
       </Form>
     </>
   );

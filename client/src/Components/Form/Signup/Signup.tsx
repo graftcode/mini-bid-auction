@@ -53,7 +53,7 @@ const Signup = () => {
           onChange={(e) => setUsername(e.target.value)}
           value={username}
         />
-        <Button buttonText="Sign me up" />
+        <Button>Sign me up</Button>
       </Form>
     </>
   );
