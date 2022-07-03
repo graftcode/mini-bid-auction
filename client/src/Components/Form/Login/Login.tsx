@@ -9,16 +9,26 @@ const Login = () => {
   const [email, setEmail] = useState("abdi@mongodb.com");
   const [password, setPassword] = useState("123456");
 
-  const handleSubmit = (e: React.SyntheticEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     console.log("implement onlogin");
     e.preventDefault();
 
-    axios
+    await axios
       .post("http://localhost:4500/auth/login", {
         email,
         password,
       })
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data.headers["auth-token"]);
+        return data.headers["auth-token"];
+      })
+      .then((token) => {
+        axios
+          .get("http://localhost:4500/api/items", {
+            headers: { "auth-token": token },
+          })
+          .then((data) => console.log(data));
+      });
   };
 
   return (
