@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import bodyParser from "body-parser";
+import cors from "cors";
 
 import authRoutes from "./routes/auth";
 import itemRoutes from "./routes/items";
@@ -12,6 +13,12 @@ const app = express();
 const port = 4500;
 
 app.use(bodyParser.json());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    exposedHeaders: "auth-token",
+  })
+);
 
 app.get("/", (_, res) => {
   res.send("Hello World!");

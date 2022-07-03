@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 import Button from "../../Button/Button";
@@ -5,12 +6,19 @@ import Input from "../../Input/Input";
 import { Form } from "../Form.styles";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("abdi@mongodb.com");
+  const [password, setPassword] = useState("123456");
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     console.log("implement onlogin");
     e.preventDefault();
+
+    axios
+      .post("http://localhost:4500/auth/login", {
+        email,
+        password,
+      })
+      .then((data) => console.log(data));
   };
 
   return (
