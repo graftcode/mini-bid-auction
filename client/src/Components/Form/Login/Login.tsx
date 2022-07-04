@@ -1,13 +1,15 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import Button from "../../Button/Button";
 import Input from "../../Input/Input";
 import { Form } from "../Form.styles";
+import { AuthContext } from "../../../Contexts/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("abdi@mongodb.com");
   const [password, setPassword] = useState("123456");
+  const { setAuthToken } = useContext<any>(AuthContext);
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     console.log("implement onlogin");
@@ -20,14 +22,8 @@ const Login = () => {
       })
       .then((data) => {
         console.log(data.headers["auth-token"]);
+        setAuthToken(data.headers["auth-token"]);
         return data.headers["auth-token"];
-      })
-      .then((token) => {
-        axios
-          .get("http://localhost:4500/api/items", {
-            headers: { "auth-token": token },
-          })
-          .then((data) => console.log(data));
       });
   };
 
