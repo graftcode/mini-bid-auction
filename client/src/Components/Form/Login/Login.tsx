@@ -1,10 +1,11 @@
-import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../Button/Button";
 import Input from "../../Input/Input";
 import { Form } from "../Form.styles";
 import { AuthContext, IAuthContext } from "../../../Contexts/AuthContext";
+
+import axios from "../../../axios";
 
 const Login = () => {
   const [email, setEmail] = useState("abdi@mongodb.com");
@@ -17,7 +18,7 @@ const Login = () => {
     e.preventDefault();
 
     await axios
-      .post("http://localhost:4500/auth/login", {
+      .post("auth/login", {
         email,
         password,
       })

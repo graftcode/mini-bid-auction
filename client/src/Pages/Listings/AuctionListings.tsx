@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
-import axios from "axios";
+import axios from "../../axios";
 
 interface IListing {
   item: string;
@@ -18,7 +18,7 @@ const AuctionListings: React.FC = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4500/api/items", {
+      .get("api/items", {
         headers: { "auth-token": authToken },
       })
       .then(({ data }) => setListings(data?.data));
