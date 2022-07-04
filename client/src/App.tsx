@@ -12,7 +12,7 @@ function App() {
   return (
     <AuthContext.Provider value={{ authToken, setAuthToken }}>
       <div className="App">
-        <h1>APP COMponent</h1>
+        <h1>Mini Bid Auction Platform</h1>
         <BrowserRouter>
           <Routes>
             <Route index element={<Auth />} />
