@@ -4,12 +4,12 @@ import React, { useContext, useState } from "react";
 import Button from "../../Button/Button";
 import Input from "../../Input/Input";
 import { Form } from "../Form.styles";
-import { AuthContext } from "../../../Contexts/AuthContext";
+import { AuthContext, IAuthContext } from "../../../Contexts/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("abdi@mongodb.com");
   const [password, setPassword] = useState("123456");
-  const { setAuthToken } = useContext<any>(AuthContext);
+  const { setAuthToken } = useContext<IAuthContext>(AuthContext);
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     console.log("implement onlogin");

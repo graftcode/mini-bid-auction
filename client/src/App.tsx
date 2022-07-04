@@ -5,7 +5,7 @@ import "./App.css";
 import { AuthContext } from "./Contexts/AuthContext";
 
 function App() {
-  const [authToken, setAuthToken] = useState(null);
+  const [authToken, setAuthToken] = useState<any>(null);
   return (
     <AuthContext.Provider value={{ authToken, setAuthToken }}>
       <div className="App">
