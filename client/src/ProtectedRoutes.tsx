@@ -4,7 +4,7 @@ import { Navigate, Outlet } from "react-router-dom";
 const ProtectedRoutes: React.FC<{ authToken: string }> = ({ authToken }) => {
   if (!authToken) return <Navigate to="/" />;
 
-  return <Outlet />;
+  return <Outlet context={{ authToken }} />;
 };
 
 export default ProtectedRoutes;
