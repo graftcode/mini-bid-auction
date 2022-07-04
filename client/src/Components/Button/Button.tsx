@@ -23,7 +23,7 @@ const StyledButton = styled.button<{ active?: boolean }>`
   max-width: ${rem(300)};
   width: 100%;
   font-size: ${rem(20)};
-  border: none;
+  border: 2px transparent solid;
   border-radius: 5px;
   cursor: pointer;
   background: #18ffff;
