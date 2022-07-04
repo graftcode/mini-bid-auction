@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import Button from "../../Button/Button";
 import Input from "../../Input/Input";
 import { Form } from "../Form.styles";
@@ -10,6 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState("abdi@mongodb.com");
   const [password, setPassword] = useState("123456");
   const { setAuthToken } = useContext<IAuthContext>(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     console.log("implement onlogin");
@@ -23,6 +24,7 @@ const Login = () => {
       .then((data) => {
         console.log(data.headers["auth-token"]);
         setAuthToken(data.headers["auth-token"]);
+        navigate("/listings");
         return data.headers["auth-token"];
       });
   };
