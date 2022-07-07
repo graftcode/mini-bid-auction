@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import axios from "../../axios";
+import Item from "../../Components/Item/Item";
+import { IItem } from "../../Components/Item/Item";
 
-interface IListing {
-  item: string;
-  condition: string;
-  date_listed: string;
-  auction_ends: string;
-  description: string;
-  seller_username: string;
-  status: string;
-}
-
-const AuctionListings: React.FC = (props) => {
-  const [listings, setListings] = useState<IListing[] | []>([]);
+const AuctionListings: React.FC = () => {
+  const [listings, setListings] = useState<IItem[] | []>([]);
   const { authToken }: { authToken: string } = useOutletContext();
 
   useEffect(() => {
@@ -27,17 +19,8 @@ const AuctionListings: React.FC = (props) => {
   return (
     <>
       <h1>Auction Listing Page</h1>
-      {listings.map((listing, index) => (
-        <div key={index}>
-          <p>{listing.item}</p>
-          <p>{listing.condition}</p>
-          <p>{listing.date_listed}</p>
-          <p>{listing.condition}</p>
-          <p>{listing.auction_ends}</p>
-          <p>{listing.description}</p>
-          <p>{listing.seller_username}</p>
-          <p>{listing.status}</p>
-        </div>
+      {listings.map((listing) => (
+        <Item key={listing._id} item={listing} />
       ))}
     </>
   );
