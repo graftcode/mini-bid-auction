@@ -8,6 +8,11 @@ export const Wrapper = styled.div`
   border: solid 1px white;
   max-width: 450px;
   margin-bottom: ${rem(16)};
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 export const Img = styled.img`
@@ -22,7 +27,6 @@ export const ListWrapper = styled.ul`
   text-align: left;
   font-size: ${rem(12)};
   padding-left: ${rem(10)};
-
 `;
 
 export const List = styled.li`

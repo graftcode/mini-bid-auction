@@ -6,6 +6,7 @@ import AuctionListings from "./Pages/Listings/AuctionListings";
 import "./App.css";
 import { AuthContext } from "./Contexts/AuthContext";
 import ProtectedRoutes from "./ProtectedRoutes";
+import { Layout } from "./Components/Layout/Layout";
 
 function App() {
   const [authToken, setAuthToken] = useState<any>(null);
@@ -13,6 +14,7 @@ function App() {
     <AuthContext.Provider value={{ authToken, setAuthToken }}>
       <div className="App">
         <h1>Mini Bid Auction Platform</h1>
+        <Layout>
         <BrowserRouter>
           <Routes>
             <Route index element={<Auth />} />
@@ -22,6 +24,7 @@ function App() {
             </Route>
           </Routes>
         </BrowserRouter>
+        </Layout>
       </div>
     </AuthContext.Provider>
   );
