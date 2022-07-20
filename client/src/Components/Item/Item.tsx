@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Img, List, Wrapper, ListWrapper } from "./Item.styles";
 import NoImage from "../../assets/NoImage.webp";
+import Button from "../Button/Button";
+import axios from "../../axios";
+import { AuthContext } from "../../Contexts/AuthContext";
 
 export interface IItem {
   item: string;
@@ -17,6 +20,27 @@ export interface IItem {
 }
 
 const Item: React.FC<{ item: IItem }> = ({ item }) => {
+  const { authToken } = useContext<any>(AuthContext);
+
+  console.log({
+    item: item.item,
+    id: item._id,
+  });
+
+  const handleInterest = () => {
+    axios({
+      method: "post",
+      url: "api/item/bid",
+      data: {
+        item_id: item._id,
+        bidder_id: "626c656b865e729e114e18da",
+        bid_price: "10",
+      },
+      headers: {
+        "auth-token": authToken,
+      },
+    });
+  };
   return (
     <Wrapper>
       <Img
@@ -37,6 +61,7 @@ const Item: React.FC<{ item: IItem }> = ({ item }) => {
           <List>Seller name: {item.seller_username}</List>
           <List>status: {item.status}</List>
         </ListWrapper>
+        <Button onClick={handleInterest}>Place bid</Button>
       </div>
     </Wrapper>
   );
