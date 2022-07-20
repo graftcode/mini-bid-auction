@@ -10,6 +10,11 @@ export const Wrapper = styled.div`
   margin-bottom: ${rem(16)};
   flex-direction: column;
 
+  button {
+    max-width: 200px;
+    margin: 30px auto;
+  }
+
   @media (min-width: 768px) {
     flex-direction: row;
   }
